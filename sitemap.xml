@@ -1,23 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://j-reit-hub.com/</loc><lastmod>2026-09-21</lastmod><priority>1.0</priority></url>
-<url><loc>https://j-reit-hub.com/overview/</loc><lastmod>2026-09-21</lastmod><priority>0.8</priority></url>
-<url><loc>https://j-reit-hub.com/all/</loc><lastmod>2026-09-21</lastmod><priority>0.8</priority></url>
-<url><loc>https://j-reit-hub.com/compare/</loc><lastmod>2026-09-21</lastmod><priority>0.8</priority></url>
-<url><loc>https://j-reit-hub.com/props/</loc><lastmod>2026-09-21</lastmod><priority>0.8</priority></url>
-<url><loc>https://j-reit-hub.com/data/</loc><lastmod>2026-09-21</lastmod><priority>0.8</priority></url>
-<url><loc>https://j-reit-hub.com/reit/JBF/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
-<url><loc>https://j-reit-hub.com/reit/JMF/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
-<url><loc>https://j-reit-hub.com/reit/JRE/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
-<url><loc>https://j-reit-hub.com/reit/OJR/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
-<url><loc>https://j-reit-hub.com/reit/UUR/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
-<url><loc>https://j-reit-hub.com/reit/JPR/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
-<url><loc>https://j-reit-hub.com/reit/API/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
-<url><loc>https://j-reit-hub.com/reit/ADR/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
-<url><loc>https://j-reit-hub.com/reit/DWO/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
-<url><loc>https://j-reit-hub.com/reit/CRR/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
-<url><loc>https://j-reit-hub.com/reit/NUD/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
-<url><loc>https://j-reit-hub.com/reit/TRE/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
-<url><loc>https://j-reit-hub.com/reit/MIR/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
-<url><loc>https://j-reit-hub.com/reit/MRO/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
-</urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://YOUR-NAME.github.io/jreit-hub/</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/JBF.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/JMF.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/JRE.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/PLD.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/NMF.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/DHR.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/GLP.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/OJR.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/UUR.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/INV.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/JHR.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/KDX.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/MEL.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/SHR.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/JPR.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/API.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/IIF.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/ADR.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/DWO.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/MTR.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/HLC.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/MHR.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/AEO.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/MCT.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/LLR.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/CRR.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/MAF.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/JLF.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/NUD.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/MFL.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/TRE.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/HFR.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/MIR.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/DLI.html</loc></url><url><loc>https://YOUR-NAME.github.io/jreit-hub/reit/MRO.html</loc></url></urlset>
