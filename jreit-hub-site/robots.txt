@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://YOUR-NAME.github.io/jreit-hub/sitemap.xml
