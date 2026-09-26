@@ -219,8 +219,8 @@ const ALL=D.flatMap(r=>r.props);
 const lastIdx=(a,ok=v=>v!=null)=>{for(let i=a.length-1;i>=0;i--)if(ok(a[i]))return i;return -1};
 function pdate(l){const m=String(l).match(/(\d{2})[./](\d{1,2})/);return m?`${2000+ +m[1]}.${String(m[2]).padStart(2,'0')}`:l;}
 
-const PX={API:130000,JPR:94000,OJR:94400,TRE:182200,UUR:153700,JBF:121800,JRE:113500,JMF:109600,ADR:139500,MRO:97500,MIR:41500,NUD:126100,DWO:303000,CRR:96100,PLD:84800,NMF:140700,GLP:132600,KDX:143100,DHR:115100,JHR:83700,INV:61700,IIF:136900,MEL:101800,SHR:70600,MAF:116100,MTR:71400,JLF:92100,LLR:138900,AEO:113200,MHR:121300,DLI:91500,HLC:147200,MFL:112400,MCT:78500,HFR:130200,JEX:133300,FKR:172500,JPN:82400,SAR:54600,IGO:96800,HOS:236400,GOR:111800,HHR:134900,CRL:136500,MIA:78600,SMR:85800,ONE:74300,SSL:102000,STP:191200,TSR:131300,SAN:110800,HCM:96100,ESC:109400,TKD:95600,IHR:108300,JHD:65300,KSK:95700,ZIM:102700};
-const PXD='2026年9月18日（金）終値',PXS='Yahoo!ファイナンス';
+const PX={API:129700,JPR:93700,OJR:94300,TRE:181200,UUR:154000,JBF:119200,JRE:112900,JMF:109300,ADR:141700,MRO:98000,MIR:41050,NUD:126100,DWO:307500,CRR:95400,PLD:84600,NMF:141600,GLP:133600,KDX:145400,DHR:112800,JHR:82600,INV:60700,IIF:134000,MEL:100300,SHR:70100,MAF:114800,MTR:70300,JLF:91700,LLR:146200,AEO:112600,MHR:121700,DLI:92600,HLC:145300,MFL:112400,MCT:76000,HFR:130100,JEX:131300,FKR:171700,JPN:80300,SAR:54200,IGO:95400,HOS:235500,GOR:111100,HHR:132000,CRL:136100,MIA:78900,SMR:85100,ONE:74600,SSL:98500,STP:185200,TSR:129400,SAN:107200,HCM:95600,ESC:105400,TKD:91700,IHR:106400,JHD:66900,KSK:97300,ZIM:105200};
+const PXD='2026年9月25日（金）終値',PXD_EN='Sept 25, 2026 close',PXS='松井証券',PXS_EN='Matsui Securities';
 function metrics(r){
   const P=r.props,price=tpj(r);
   const A=P.filter(p=>p.appr!=null),AB=A.filter(p=>p.price!=null),ap=sum(A,p=>p.appr),apB=sum(AB,p=>p.appr),pa=sum(AB,p=>p.price);
@@ -340,15 +340,17 @@ const oku=v=>fmt(v/100,0);
 function vOverview(){
   const totP=sum(D,r=>r.m.price),totA=sum(D,r=>r.m.appr),totN=sum(D,r=>r.m.count);
   const totPa=sum(D,r=>r.props.filter(p=>p.appr!=null&&p.price!=null).reduce((s,p)=>s+p.price,0));
+  const ys=D.map(r=>r.m.fyield).filter(v=>v!=null).sort((a,b)=>a-b),yN=ys.length,yAvg=yN?ys.reduce((a,b)=>a+b,0)/yN:null,yMed=yN?(yN%2?ys[(yN-1)/2]:(ys[yN/2-1]+ys[yN/2])/2):null;
   return `<h2 class="pg">${t('全体を見る','Overview')} <span class="note">${t('収録銘柄を一覧で比べる','Compare all covered REITs at a glance')}</span></h2>
   <p class="lead">${t(`収録${D.length}銘柄のポートフォリオ・財務・分配金を同じ物差し（用途区分・エリア区分・期間）で並べて確認できます。行をクリックすると銘柄詳細へ移動します。`,`Compare the portfolio, financials, and distributions of all ${D.length} covered REITs on the same basis (property type, area, and period). Click a row to open that REIT's detail page.`)}</p>
-  <div class="banner">${t(`収録は現在${D.length}銘柄（${D.map(r=>r.short).join('・')}）です。全上場銘柄を網羅するものではなく、各社の最新開示から順次追加していく設計です。詳細は「データ・出典」を参照してください。`,`Currently covering ${D.length} REITs (${D.map(r=>r.short).join(', ')}). This is not every listed J-REIT — coverage is being expanded progressively from each REIT's latest disclosures. See "Data & Sources" for details.`)}</div>
+  <div class="banner">${t(`収録は現在${D.length}銘柄（${D.map(r=>r.short).join('・')}）です。東証上場の全J-REITを収録しています。数値の出典と集計ルールは「データ・出典」を参照してください。`,`Currently covering ${D.length} REITs (${D.map(r=>r.short).join(', ')}). This covers every J-REIT listed on the TSE. See "Data & Sources" for sources and aggregation rules.`)}</div>
   <div class="strip">
     <div><div class="l">${t('収録銘柄','REITs covered')}</div><div class="v num">${D.length}<small>${t('銘柄','REITs')}</small></div><div class="s">${D.map(r=>r.code).join(' / ')}</div></div>
     <div><div class="l">${t('保有物件数（開示ベース）','Properties held (disclosed)')}</div><div class="v num">${fmt(totN)}<small>${t('物件','properties')}</small></div><div class="s">${t('物件別行数','Property rows')} ${fmt(ALL.length)}</div></div>
     <div><div class="l">${t('取得価格合計','Total acquisition price')}</div><div class="v num">${fmt(totP/100)}<small>${t('億円','¥100M')}</small></div><div class="s">${t('物件別データの単純合計','Simple sum of per-property data')}</div></div>
     <div><div class="l">${tp('appr','鑑定評価額合計','Total appraisal value')}</div><div class="v num">${fmt(totA/100)}<small>${t('億円','¥100M')}</small></div><div class="s">${t('評価額が開示された物件のみ','Properties with a disclosed appraisal value only')}</div></div>
     <div><div class="l">${tp('gain','含み損益率（合計）','Unrealized gain/loss ratio (total)')}</div><div class="v num ${totA>=totPa?'gain':'loss'}">${sgnp((totA-totPa)/totPa*100,1)}<small>%</small></div><div class="s">${t('評価額あり物件の取得価格比','Vs. acquisition price of properties with an appraisal value')}</div></div>
+    <div><div class="l">${tp('yield','平均予想分配金利回り','Avg. forecast distribution yield')}</div><div class="v num">${fmtp(yAvg,2)}<small>%</small></div><div class="s">${t(`${yN}銘柄の単純平均（中央値 ${fmtp(yMed,2)}%）・${PXD}`,`Simple average of ${yN} REITs (median ${fmtp(yMed,2)}%), ${PXD_EN}`)}</div></div>
   </div>
   <h3 class="sec">${t('銘柄比較表','Comparison table')} <small>${t('列見出しで並べ替え','Click a column header to sort')}</small></h3>
   <div class="tw" id="cmpTable"></div>
@@ -470,9 +472,9 @@ function aCompare(){
 /* REIT detail */
 let dState={area:'',type:'',q:''};
 function yieldStrip(r){const m=r.m;if(!m.px)return '';
-  return `<div class="strip yl" id="dYield"><div><div class="l">株価（${PXD}）</div><div class="v num">${fmt(m.px)}<small>円</small></div><div class="s">出典：${PXS}</div></div>
+  return `<div class="strip yl" id="dYield"><div><div class="l">${t('株価','Price')}（${t(PXD,PXD_EN)}）</div><div class="v num">${fmt(m.px)}<small>${t('円','yen')}</small></div><div class="s">${t('出典','Source')}：${t(PXS,PXS_EN)}</div></div>
   <div><div class="l">${tp('fdiv','予想年間分配金','Forecast annual distribution')}</div><div class="v num">${m.fdiv==null?'—':fmt(m.fdiv)}<small>円/口</small></div><div class="s">${m.fc.map(d=>d.p.replace(/\(予\)|予/g,'').trim()+' '+fmt(d.v)+'円').join(' ＋ ')}（予想2期の合計）</div></div>
-  <div><div class="l">${tp('yield','予想分配金利回り','Forecast distribution yield')}</div><div class="v num">${fmtp(m.fyield,2)}<small>%</small></div><div class="s">予想年間分配金 ÷ 株価</div></div></div>`;}
+  <div><div class="l">${tp('yield','予想分配金利回り','Forecast distribution yield')}</div><div class="v num">${fmtp(m.fyield,2)}<small>%</small></div><div class="s">${t('予想年間分配金 ÷ 株価','Forecast annual distribution ÷ price')}</div></div></div>`;}
 function vReit(id){
   const r=byId[id];if(!r)return '<p>銘柄が見つかりません。</p>';
   const m=r.m,pick=D.map(x=>`<a href="#/reit/${x.id}" style="--sc:${scol(x.id)}" ${x.id===id?'aria-current="page"':''}><i class="dot" style="background:${scol(x.id)}"></i>${x.short}</a>`).join('');
@@ -790,22 +792,22 @@ function aGuide(){
 
 
 function vAll(){
-  const rows=[...D.map(r=>({code:r.code,name:r.short,id:r.id,type:FT[r.id]||'—',fiscal:r.fiscal,price:r.m.price||null,count:r.m.count,ltv:r.m.ltv,y:r.m.fyield,full:true})),
+  const rows=[...D.map(r=>({code:r.code,name:r.short,id:r.id,type:FT[r.id]||'—',fiscal:r.fiscal,price:r.m.price||null,count:r.m.count,ltv:r.m.ltv,y:r.m.fyield,px:r.m.px,full:true})),
    ...LITE.map(l=>({code:l.code,name:l.short,type:l.type,fiscal:l.fiscal,price:l.price,count:l.count,ltv:l.ltv,y:l.ry,ref:true,fd:l.fdps}))];
   rows.sort((a,b)=>(b.price??-1)-(a.price??-1)||(b.full?1:0)-(a.full?1:0));
-  const n=rows.length,haveP=rows.filter(r=>r.price!=null).length;
-  return `<h2 class="pg">${t('全銘柄','All REITs')} <span class="note">${t(`東証REIT指数構成${n}銘柄の一覧`,`All ${n} REITs in the TSE REIT Index`)}</span></h2>
-  <p class="lead">${t('全銘柄をまず一覧に反映しました。詳細ページ（物件・10期分の財務・予想利回り）を収録した銘柄は色付きの銘柄名から開けます。それ以外の銘柄は基本情報のみで、判明していない項目は「—」です。順次、詳細を追加していきます。','Every listed REIT is reflected here first. REITs with a full detail page (properties, 10 periods of financials, forecast yield) can be opened from their colored name. Others show only basic info, with “—” where a figure isn’t known yet. Detail coverage is being expanded progressively.')}</p>
-  <div class="banner">${t(`「参考利回り」は2026年7月31日時点の株価にもとづく予想分配金利回り（ダイヤモンドZAi掲載）で、詳細収録銘柄の「予想利回り」（2026年9月18日終値・直近開示の予想2期）とは基準が異なります。取得価格・物件数・LTVは、各社IRで確認できたものだけを掲載しています（取得価格が入っている銘柄：${haveP}／${n}）。`,`“Reference yield” is the forecast distribution yield based on the share price as of July 31, 2026 (as published by Diamond ZAi), on a different basis from the “forecast yield” shown for fully-covered REITs (Sept 18, 2026 close, latest disclosed 2-period forecast). Acquisition price, property count, and LTV are shown only where confirmed from each company’s IR materials (REITs with acquisition price data: ${haveP}/${n}).`)}</div>
-  <div class="tw scroll"><table class="dt"><thead><tr><th>${t('銘柄','REIT')}</th><th>${t('コード','Code')}</th><th>${t('用途','Type')}</th><th>${t('決算月','Fiscal month')}</th><th class="r">${t('取得価格合計（億円）','Total acquisition price (¥100M)')}</th><th class="r">${t('物件数','Properties')}</th><th class="r">${t('総資産LTV（％）','LTV, total assets (%)')}</th><th class="r">${t('予想利回り（％）','Forecast yield (%)')}</th><th>${t('基準','Basis')}</th></tr></thead><tbody>${rows.map(r=>`<tr>
+  const n=rows.length,pd=PXD.replace(/^\d+年|（.）|終値/g,''),pdE=PXD_EN.replace(/, \d{4} close/,'');
+  return `<h2 class="pg">${t('銘柄一覧','REIT list')} <span class="note">${t(`東証上場の全${n}銘柄`,`All ${n} TSE-listed J-REITs`)}</span></h2>
+  <p class="lead">${t(`東証に上場する全${n}銘柄の基本指標を、取得価格合計の大きい順に並べています。銘柄名をクリックすると、保有物件・直近10期の財務・分配金の推移をまとめた詳細ページが開きます。`,`Key figures for all ${n} TSE-listed J-REITs, sorted by total acquisition price. Click a REIT name to open its detail page with properties, the latest 10 periods of financials, and distribution history.`)}</p>
+  <div class="banner">${t(`予想利回りは「直近に開示された予想分配金2期分の合計 ÷ 投資口価格（${pd}終値）」です（年1回決算のジャパン・ホテル・リートは予想1期分）。取得価格合計・物件数は物件別データの集計（一部の銘柄は公表の合計値）、総資産LTVは直近期の値です。銘柄ごとの定義の違いや注意点は「データ・出典」にまとめています。`,`Forecast yield = the sum of the two most recently disclosed forecast distributions ÷ unit price (${pdE} close); Japan Hotel REIT, which reports annually, uses one forecast period. Total acquisition price and property count are aggregated from per-property data (disclosed totals for some REITs); LTV is the latest period. Differences in definitions by REIT are noted under "Data & Sources".`)}</div>
+  <div class="tw scroll"><table class="dt"><thead><tr><th>${t('銘柄','REIT')}</th><th>${t('コード','Code')}</th><th class="r">${t(`投資口価格（${pd}終値・円）`,`Unit price (${pdE} close, ¥)`)}</th><th>${t('用途','Type')}</th><th>${t('決算月','Fiscal month')}</th><th class="r">${t('取得価格合計（億円）','Total acquisition price (¥100M)')}</th><th class="r">${t('物件数','Properties')}</th><th class="r">${t('総資産LTV（％）','LTV, total assets (%)')}</th><th class="r">${t('予想利回り（％）','Forecast yield (%)')}</th></tr></thead><tbody>${rows.map(r=>`<tr>
    <td>${r.full?`<a href="#/reit/${r.id}" style="color:inherit;font-weight:700"><span class="chip"><i class="dot" style="background:${scol(r.id)}"></i>${r.name}</span></a>`:r.name}</td>
-   <td class="code">${r.code}</td><td>${ct(r.type)}</td><td>${r.fiscal||'—'}</td>
+   <td class="code">${r.code}</td><td class="r">${r.px!=null?fmt(r.px):'—'}</td><td>${ct(r.type)}</td><td>${r.fiscal||'—'}</td>
    <td class="r">${r.price!=null?fmt(r.price/100):'—'}</td><td class="r">${r.count!=null?fmt(r.count):'—'}</td><td class="r">${r.ltv!=null?fmtp(r.ltv,1):'—'}</td>
-   <td class="r">${r.y!=null?fmtp(r.y,2):'—'}</td><td class="note">${r.full?t('9/18終値・予想2期','Sept 18 close, 2-period forecast'):t('参考（7/31時点）','Reference (as of 7/31)')}</td></tr>`).join('')}</tbody></table></div>
-  <p class="foot">${t('用途・決算月・参考利回りは東証REIT指数構成銘柄の一覧記事（ダイヤモンドZAiオンライン、2026年7月31日時点）、取得価格・物件数・LTVは各投資法人のIR資料によります。','Type, fiscal month, and reference yield are from a TSE REIT Index constituent list article (Diamond ZAi Online, as of July 31, 2026); acquisition price, property count, and LTV are from each REIT’s IR materials.')}</p>`;
+   <td class="r">${r.y!=null?fmtp(r.y,2):'—'}</td></tr>`).join('')}</tbody></table></div>
+  <p class="foot">${t(`出典：各投資法人の決算短信・決算説明資料・有価証券報告書・公式サイト。投資口価格は${PXS}（${pd}終値）。用途は本サイトの区分です。`,`Sources: each REIT's earnings reports, investor presentations, securities reports, and official website. Unit prices from ${PXS_EN} (${pdE} close). Type categories are this site's own classification.`)}</p>`;
 }
 /* ---------- router ---------- */
-const ROUTES=()=>[['guide',t('はじめに','Guide')],['overview',t('全体を見る','Overview')],['all',t('全銘柄','All REITs')],['compare',t('比べる','Compare')],['reit',t('銘柄別','By REIT')],['props',t('物件を探す','Find properties')],['data',t('データ・出典','Data & Sources')]];
+const ROUTES=()=>[['guide',t('はじめに','Guide')],['overview',t('全体を見る','Overview')],['all',t('銘柄一覧','REIT list')],['compare',t('比べる','Compare')],['reit',t('銘柄別','By REIT')],['props',t('物件を探す','Find properties')],['data',t('データ・出典','Data & Sources')]];
 function route(){
   killCharts();
   const h=(location.hash||'#/guide').replace(/^#\/?/,'').split('/');const name=(h[0]||'guide').replace('guide-glossary','guide');
